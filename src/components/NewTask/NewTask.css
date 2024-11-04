@@ -1,0 +1,23 @@
+.task {
+  padding: 5px 10px;
+  display: flex;
+  gap: 10px;
+  border: 1px solid #343434;
+  align-items: center;
+}
+
+p {
+  word-wrap: break-word;
+}
+
+.checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #fcfbfc;
+  border: 1px #343434 solid;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}

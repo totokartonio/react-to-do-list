@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
+import { NewTask } from "./components/NewTask/NewTask";
 import type { Task } from "./types";
 
 function App() {
@@ -27,11 +28,11 @@ function App() {
         <NewTaskInput onChange={setNewTask} value={newTask} />
         <NewTaskButton />
       </form>
-      <ul>
+      <div className="taskList">
         {tasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
+          <NewTask key={task.id} task={task} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

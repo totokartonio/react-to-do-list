@@ -1,0 +1,18 @@
+button {
+  background: none;
+  background-color: #fcfbfc;
+  border: 1px solid #343434;
+  height: 27px;
+  padding: 0 5px;
+  margin: 0;
+  font-size: 15px;
+  color: #343434;
+}
+
+button:hover {
+  background-color: #e8e8e8;
+}
+
+button:active {
+  background-color: #b3b0b0;
+}
