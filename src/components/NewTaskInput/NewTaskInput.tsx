@@ -1,4 +1,5 @@
 import React from "react";
+import "./NewTaskInput.css";
 
 type Props = {
   onChange: (value: string) => void;
