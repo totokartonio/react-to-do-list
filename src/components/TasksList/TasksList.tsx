@@ -6,7 +6,7 @@ type Props = {
   handleComplete: (taskId: string) => void;
 };
 
-const TasksList = ({ tasks, handleComplete }: Props) => {
+const TasksList = ({ tasks, onComplete }: Props) => {
   return (
     <div className="tasksList">
       {tasks.map((task) => (
