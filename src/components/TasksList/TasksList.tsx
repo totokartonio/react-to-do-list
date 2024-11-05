@@ -3,13 +3,18 @@ import { Task } from "../../types";
 
 type Props = {
   tasks: Task[];
+  handleComplete: (taskId: string) => void;
 };
 
-const TasksList = ({ tasks }: Props) => {
+const TasksList = ({ tasks, handleComplete }: Props) => {
   return (
     <div className="tasksList">
       {tasks.map((task) => (
-        <NewTask key={task.id} task={task} />
+        <NewTask
+          key={task.id}
+          task={task}
+          onComplete={() => handleComplete(task.id)}
+        />
       ))}
     </div>
   );

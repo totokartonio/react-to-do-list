@@ -23,6 +23,14 @@ function App() {
     setNewTask("");
   };
 
+  const handleComplete = (taskId: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
+      )
+    );
+  };
+
   return (
     <div>
       <Label />
@@ -30,7 +38,7 @@ function App() {
         <NewTaskInput onChange={setNewTask} value={newTask} />
         <NewTaskButton />
       </form>
-      <TasksList tasks={tasks} />
+      <TasksList tasks={tasks} handleComplete={handleComplete} />
     </div>
   );
 }
