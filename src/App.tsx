@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
+import "./styles/reset.css";
+
 import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
-import { NewTask } from "./components/NewTask/NewTask";
+import { TasksList } from "./components/TasksList/TasksList";
 import type { Task } from "./types";
 
 function App() {
@@ -28,11 +30,7 @@ function App() {
         <NewTaskInput onChange={setNewTask} value={newTask} />
         <NewTaskButton />
       </form>
-      <div className="taskList">
-        {tasks.map((task) => (
-          <NewTask key={task.id} task={task} />
-        ))}
-      </div>
+      <TasksList tasks={tasks} />
     </div>
   );
 }
