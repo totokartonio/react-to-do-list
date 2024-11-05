@@ -3,7 +3,7 @@ import { Task } from "../../types";
 
 type Props = {
   tasks: Task[];
-  handleComplete: (taskId: string) => void;
+  onComplete: (taskId: string) => void;
 };
 
 const TasksList = ({ tasks, onComplete }: Props) => {
