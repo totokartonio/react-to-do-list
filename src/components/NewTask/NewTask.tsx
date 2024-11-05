@@ -3,12 +3,13 @@ import "./NewTask.css";
 
 type Props = {
   task: Task;
+  onComplete: () => void;
 };
 
-const NewTask = ({ task }: Props) => {
+const TaskItem = ({ task, onComplete }: Props) => {
   return (
     <div className="task">
-      <input type="checkbox" /*checked={task.isCompleted}*/ />
+      <input type="checkbox" checked={task.isCompleted} onChange={onComplete} />
       <p>{task.title}</p>
     </div>
   );
