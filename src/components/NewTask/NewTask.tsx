@@ -6,7 +6,7 @@ type Props = {
   onComplete: () => void;
 };
 
-const NewTask = ({ task, onComplete }: Props) => {
+const TaskItem = ({ task, onComplete }: Props) => {
   return (
     <div className="task">
       <input type="checkbox" checked={task.isCompleted} onChange={onComplete} />
