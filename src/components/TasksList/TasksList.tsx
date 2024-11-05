@@ -1,4 +1,4 @@
-import { NewTask } from "../NewTask/NewTask";
+import { TaskItem } from "../ TaskItem/Taskitem";
 import { Task } from "../../types";
 
 type Props = {
@@ -10,7 +10,7 @@ const TasksList = ({ tasks, onComplete }: Props) => {
   return (
     <div className="tasksList">
       {tasks.map((task) => (
-        <NewTask
+        <TaskItem
           key={task.id}
           task={task}
           onComplete={() => onComplete(task.id)}

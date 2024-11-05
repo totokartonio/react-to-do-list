@@ -1,5 +1,5 @@
 import type { Task } from "../../types";
-import "./NewTask.css";
+import "./TaskItem.css";
 
 type Props = {
   task: Task;
@@ -15,4 +15,4 @@ const TaskItem = ({ task, onComplete }: Props) => {
   );
 };
 
-export { NewTask };
+export { TaskItem };
