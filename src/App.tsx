@@ -38,7 +38,7 @@ function App() {
         <NewTaskInput onChange={setNewTask} value={newTask} />
         <NewTaskButton />
       </form>
-      <TasksList tasks={tasks} handleComplete={handleComplete} />
+      <TasksList tasks={tasks} onComplete={handleComplete} />
     </div>
   );
 }
