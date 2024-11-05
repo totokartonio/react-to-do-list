@@ -13,7 +13,7 @@ const TasksList = ({ tasks, handleComplete }: Props) => {
         <NewTask
           key={task.id}
           task={task}
-          onComplete={() => handleComplete(task.id)}
+          onComplete={() => onComplete(task.id)}
         />
       ))}
     </div>
