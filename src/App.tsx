@@ -6,13 +6,13 @@ import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
 import { TasksList } from "./components/TasksList/TasksList";
+import { ToDoTasksCounter } from "./components/ToDoTasksCounter/ToDoTasksCounter";
 import type { Task } from "./types";
 
 function App() {
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
   const handleAddTask = (event: React.SyntheticEvent) => {
-    // if (!newTask) return;
     event.preventDefault();
     const task: Task = {
       id: crypto.randomUUID(),
@@ -31,6 +31,14 @@ function App() {
     );
   };
 
+  const tasksToDo =
+    tasks.length === 0
+      ? undefined
+      : tasks.reduce(
+          (count, task) => (task.isCompleted ? count : count + 1),
+          0
+        );
+
   return (
     <div>
       <Label />
@@ -39,6 +47,7 @@ function App() {
         <NewTaskButton />
       </form>
       <TasksList tasks={tasks} onComplete={handleComplete} />
+      <ToDoTasksCounter tasksToDo={tasksToDo} />
     </div>
   );
 }
