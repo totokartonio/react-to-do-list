@@ -1,4 +1,4 @@
-import { TaskItem } from "../ TaskItem/Taskitem";
+import { TaskItem } from "../ TaskItem/TaskItem";
 import { Task } from "../../types";
 
 type Props = {
