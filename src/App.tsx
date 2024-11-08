@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import "./styles/reset.css";
+import "./styles/style.css";
 
 import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";

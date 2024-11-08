@@ -9,7 +9,12 @@ type Props = {
 const TaskItem = ({ task, onComplete }: Props) => {
   return (
     <div className="task">
-      <input type="checkbox" checked={task.isCompleted} onChange={onComplete} />
+      <input
+        className="checkbox"
+        type="checkbox"
+        checked={task.isCompleted}
+        onChange={onComplete}
+      />
       <p>{task.title}</p>
     </div>
   );
