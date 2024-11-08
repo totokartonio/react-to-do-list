@@ -6,13 +6,14 @@ import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
 import { TasksList } from "./components/TasksList/TasksList";
+import { IncompleteTasksCounter } from "./components/IncompleteTasksCounter/IncompleteTasksCounter";
+import { getIncompleteTasksCount } from "./utils";
 import type { Task } from "./types";
 
 function App() {
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
   const handleAddTask = (event: React.SyntheticEvent) => {
-    // if (!newTask) return;
     event.preventDefault();
     const task: Task = {
       id: crypto.randomUUID(),
@@ -33,12 +34,17 @@ function App() {
 
   return (
     <div>
-      <Label />
-      <form onSubmit={handleAddTask}>
-        <NewTaskInput onChange={setNewTask} value={newTask} />
-        <NewTaskButton />
-      </form>
-      <TasksList tasks={tasks} onComplete={handleComplete} />
+      <div className="content-container">
+        <form className="new-task-form" onSubmit={handleAddTask}>
+          <Label />
+          <NewTaskInput onChange={setNewTask} value={newTask} />
+          <NewTaskButton />
+        </form>
+        <TasksList tasks={tasks} onComplete={handleComplete} />
+        {tasks.length > 0 && (
+          <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
+        )}
+      </div>
     </div>
   );
 }
