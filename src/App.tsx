@@ -7,7 +7,7 @@ import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
 import { TasksList } from "./components/TasksList/TasksList";
 import { IncompleteTasksCounter } from "./components/IncompleteTasksCounter/IncompleteTasksCounter";
-import { getIncompleteTasksCount, getTasksCounterLabel } from "./utils";
+import { getIncompleteTasksCount } from "./utils";
 import type { Task } from "./types";
 
 function App() {
@@ -32,20 +32,19 @@ function App() {
     );
   };
 
-  const incompleteTasksCount = getIncompleteTasksCount({ tasks });
-  const counterLabel = getTasksCounterLabel(incompleteTasksCount);
-
   return (
     <div>
-      <Label />
-      <form onSubmit={handleAddTask}>
-        <NewTaskInput onChange={setNewTask} value={newTask} />
-        <NewTaskButton />
-      </form>
-      <TasksList tasks={tasks} onComplete={handleComplete} />
-      {tasks.length > 0 && (
-        <IncompleteTasksCounter counterLabel={counterLabel} />
-      )}
+      <div className="content-container">
+        <form className="new-task-form" onSubmit={handleAddTask}>
+          <Label />
+          <NewTaskInput onChange={setNewTask} value={newTask} />
+          <NewTaskButton />
+        </form>
+        <TasksList tasks={tasks} onComplete={handleComplete} />
+        {tasks.length > 0 && (
+          <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
+        )}
+      </div>
     </div>
   );
 }

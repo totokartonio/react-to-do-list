@@ -1,9 +1,12 @@
+import { getTasksCounterLabel } from "../../utils";
+
 type Props = {
-  counterLabel: string;
+  count: number;
 };
 
-const IncompleteTasksCounter = ({ counterLabel }: Props) => {
-  return <div className="incompleteTasksCounter">{counterLabel}</div>;
+const IncompleteTasksCounter = ({ count }: Props) => {
+  const label = getTasksCounterLabel(count);
+  return <div className="incompleteTasksCounter">{label}</div>;
 };
 
 export { IncompleteTasksCounter };
