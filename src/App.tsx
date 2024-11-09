@@ -8,6 +8,7 @@ import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
 import { TasksList } from "./components/TasksList/TasksList";
 import { IncompleteTasksCounter } from "./components/IncompleteTasksCounter/IncompleteTasksCounter";
+import { ClearCompletedButton } from "./components/ClearCompletedButton/ClearCompletedButton";
 import { getIncompleteTasksCount } from "./utils";
 import type { Task } from "./types";
 
@@ -33,6 +34,10 @@ function App() {
     );
   };
 
+  const handleClearCompletedTasks = () => {
+    setTasks((prevTasks) => prevTasks.filter((task) => !task.isCompleted));
+  };
+
   return (
     <div>
       <div className="content-container">
@@ -45,6 +50,7 @@ function App() {
         {tasks.length > 0 && (
           <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
         )}
+        <ClearCompletedButton onClick={handleClearCompletedTasks} />
       </div>
     </div>
   );
