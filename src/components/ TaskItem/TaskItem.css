@@ -3,6 +3,7 @@
   display: flex;
   gap: 10px;
   border: 1px solid #343434;
+  justify-content: start;
   align-items: center;
 }
 
@@ -11,7 +12,6 @@ p {
 }
 
 .checkbox {
-  appearance: none;
   width: 20px;
   height: 20px;
   background-color: #fcfbfc;
