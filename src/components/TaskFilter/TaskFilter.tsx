@@ -1,19 +1,21 @@
 import React from "react";
+import { FilterValues } from "../../types";
+
 type Props = {
-  selectedFilter: string;
-  onFilterChange: (filter: string) => void;
+  selectedFilter: FilterValues;
+  onFilterChange: (filter: FilterValues) => void;
 };
 
 const TaskFilter = ({ selectedFilter, onFilterChange }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onFilterChange(event.target.value);
+    onFilterChange(event.target.value as FilterValues);
   };
 
   return (
     <select className="filter" value={selectedFilter} onChange={handleChange}>
-      <option value="all">All</option>
-      <option value="completed">Completed</option>
-      <option value="active">Active</option>
+      <option value={FilterValues.All}>All</option>
+      <option value={FilterValues.Completed}>Completed</option>
+      <option value={FilterValues.Active}>Active</option>
     </select>
   );
 };

@@ -11,12 +11,13 @@ import { IncompleteTasksCounter } from "./components/IncompleteTasksCounter/Inco
 import { ClearCompletedButton } from "./components/ClearCompletedButton/ClearCompletedButton";
 import { TaskFilter } from "./components/TaskFilter/TaskFilter";
 import { getIncompleteTasksCount } from "./utils";
+import { FilterValues } from "./types";
 import type { Task } from "./types";
 
 function App() {
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState<FilterValues>(FilterValues.All);
 
   const handleAddTask = (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -41,15 +42,9 @@ function App() {
     setTasks((prevTasks) => prevTasks.filter((task) => !task.isCompleted));
   };
 
-  const handleFilterChange = (selectedFilter: string) => {
+  const handleFilterChange = (selectedFilter: FilterValues) => {
     setFilter(selectedFilter);
   };
-
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === "all") return true;
-    if (filter === "completed") return task.isCompleted;
-    if (filter === "active") return !task.isCompleted;
-  });
 
   return (
     <div>
@@ -59,7 +54,7 @@ function App() {
           <NewTaskInput onChange={setNewTask} value={newTask} />
           <NewTaskButton />
         </form>
-        <TasksList tasks={filteredTasks} onComplete={handleComplete} />
+        <TasksList tasks={tasks} filter={filter} onComplete={handleComplete} />
         {tasks.length > 0 && (
           <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
         )}
