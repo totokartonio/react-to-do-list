@@ -5,10 +5,9 @@ import "./styles/style.css";
 
 import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
-import { NewTaskButton } from "./components/NewTaskButton/NewTaskButton";
 import { TasksList } from "./components/TasksList/TasksList";
 import { IncompleteTasksCounter } from "./components/IncompleteTasksCounter/IncompleteTasksCounter";
-import { ClearCompletedButton } from "./components/ClearCompletedButton/ClearCompletedButton";
+import { Button } from "./components/Button/Button";
 import { TaskFilter } from "./components/TaskFilter/TaskFilter";
 import { getIncompleteTasksCount } from "./utils";
 import { FilterValues } from "./types";
@@ -52,13 +51,20 @@ function App() {
         <form className="new-task-form" onSubmit={handleAddTask}>
           <Label />
           <NewTaskInput onChange={setNewTask} value={newTask} />
-          <NewTaskButton />
+          <Button type="submit" buttonClass="new-task-button">
+            Add task
+          </Button>
         </form>
         <TasksList tasks={tasks} filter={filter} onComplete={handleComplete} />
         {tasks.length > 0 && (
           <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
         )}
-        <ClearCompletedButton onClick={handleClearCompletedTasks} />
+        <Button
+          buttonClass="clear-completed-button"
+          onClick={handleClearCompletedTasks}
+        >
+          Clear Completed Tasks
+        </Button>
         <TaskFilter
           selectedFilter={filter}
           onFilterChange={handleFilterChange}
