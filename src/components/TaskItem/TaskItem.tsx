@@ -1,6 +1,7 @@
 import type { Task } from "../../types";
 import "./TaskItem.css";
 import { Button } from "../Button/Button";
+import { EditIcon, DeleteIcon } from "./Icons";
 
 type Props = {
   task: Task;
@@ -24,11 +25,11 @@ const TaskItem = ({ task, onComplete }: Props) => {
         onChange={onComplete}
       />
       <p>{task.title}</p>
-      <Button buttonClass="edit-button" onClick={handleEditTask}>
-        Edit
+      <Button variant="secondary" size="small" onClick={handleEditTask}>
+        <EditIcon />
       </Button>
-      <Button buttonClass="delete-button" onClick={handleDeleteTask}>
-        Delete
+      <Button variant="negative" size="small" onClick={handleDeleteTask}>
+        <DeleteIcon />
       </Button>
     </div>
   );

@@ -1,0 +1,46 @@
+button {
+  background: none;
+  border: 1px solid;
+  padding: 0 5px;
+  margin: 0;
+  font-size: 15px;
+  color: #343434;
+}
+
+button:hover {
+  background-color: #e8e8e8;
+}
+
+button:active {
+  background-color: #b3b0b0;
+}
+
+.primary {
+  background-color: #fcfbfc;
+  border-color: #343434;
+}
+
+.secondary {
+  background-color: #fcfbfc;
+  border-color: #8b8989;
+}
+
+.negative {
+  background-color: #fcfbfc;
+  border-color: #bb1313;
+}
+
+.small {
+  width: 30px;
+  height: 30px;
+}
+
+.medium {
+  width: 75px;
+  height: 30px;
+}
+
+.large {
+  width: 175px;
+  height: 30px;
+}

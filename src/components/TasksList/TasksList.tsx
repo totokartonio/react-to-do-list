@@ -1,6 +1,6 @@
 import "./TasksList.css";
 import { FilterValues } from "../../types";
-import { TaskItem } from "../ TaskItem/TaskItem";
+import { TaskItem } from "../TaskItem/TaskItem";
 import { Task } from "../../types";
 
 type Props = {

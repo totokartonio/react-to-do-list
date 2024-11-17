@@ -51,7 +51,7 @@ function App() {
         <form className="new-task-form" onSubmit={handleAddTask}>
           <Label />
           <NewTaskInput onChange={setNewTask} value={newTask} />
-          <Button type="submit" buttonClass="new-task-button">
+          <Button type="submit" variant="primary" size="medium">
             Add task
           </Button>
         </form>
@@ -60,7 +60,8 @@ function App() {
           <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
         )}
         <Button
-          buttonClass="clear-completed-button"
+          variant="primary"
+          size="large"
           onClick={handleClearCompletedTasks}
         >
           Clear Completed Tasks
