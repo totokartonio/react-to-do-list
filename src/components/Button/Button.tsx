@@ -3,8 +3,8 @@ import "./Button.css";
 
 type Props = {
   type?: "button" | "submit";
-  variant: "primary" | "secondary" | "negative";
-  size: "small" | "medium" | "large";
+  variant?: "primary" | "secondary" | "negative";
+  size?: "small" | "medium" | "large";
   onClick?: () => void;
   icon?: ReactNode;
   children: ReactNode;
@@ -18,7 +18,11 @@ const Button = ({
   children,
 }: Props) => {
   return (
-    <button type={type} className={`${variant} ${size}`} onClick={onClick}>
+    <button
+      type={type}
+      className={`button-variant-${variant} button-size-${size}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

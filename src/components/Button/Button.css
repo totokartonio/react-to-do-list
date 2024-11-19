@@ -15,32 +15,32 @@ button:active {
   background-color: #b3b0b0;
 }
 
-.primary {
+.button-variant-primary {
   background-color: #fcfbfc;
   border-color: #343434;
 }
 
-.secondary {
+.button-variant-secondary {
   background-color: #fcfbfc;
   border-color: #8b8989;
 }
 
-.negative {
+.button-variant-negative {
   background-color: #fcfbfc;
   border-color: #bb1313;
 }
 
-.small {
+.button-size-small {
   width: 30px;
   height: 30px;
 }
 
-.medium {
+.button-size-medium {
   width: 75px;
   height: 30px;
 }
 
-.large {
+.button-size-large {
   width: 175px;
   height: 30px;
 }

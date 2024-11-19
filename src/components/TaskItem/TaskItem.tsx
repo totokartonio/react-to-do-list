@@ -1,7 +1,7 @@
 import type { Task } from "../../types";
 import "./TaskItem.css";
 import { Button } from "../Button/Button";
-import { EditIcon, DeleteIcon } from "./Icons";
+import { EditIcon, DeleteIcon } from "../Icons/Icons";
 
 type Props = {
   task: Task;
