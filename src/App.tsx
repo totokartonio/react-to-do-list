@@ -37,6 +37,10 @@ function App() {
     );
   };
 
+  const handleTaskDelete = (taskId: string) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
   const handleClearCompletedTasks = () => {
     setTasks((prevTasks) => prevTasks.filter((task) => !task.isCompleted));
   };
@@ -55,7 +59,12 @@ function App() {
             Add task
           </Button>
         </form>
-        <TasksList tasks={tasks} filter={filter} onComplete={handleComplete} />
+        <TasksList
+          tasks={tasks}
+          filter={filter}
+          onComplete={handleComplete}
+          onDelete={handleTaskDelete}
+        />
         {tasks.length > 0 && (
           <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
         )}

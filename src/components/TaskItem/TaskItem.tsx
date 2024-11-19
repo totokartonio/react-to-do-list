@@ -6,16 +6,14 @@ import { EditIcon, DeleteIcon } from "./Icons";
 type Props = {
   task: Task;
   onComplete: () => void;
+  onDelete: () => void;
 };
 
 const handleEditTask = () => {
   console.log("Edited!");
 };
-const handleDeleteTask = () => {
-  console.log("Deleted!");
-};
 
-const TaskItem = ({ task, onComplete }: Props) => {
+const TaskItem = ({ task, onComplete, onDelete }: Props) => {
   return (
     <div className="task">
       <input
@@ -28,7 +26,7 @@ const TaskItem = ({ task, onComplete }: Props) => {
       <Button variant="secondary" size="small" onClick={handleEditTask}>
         <EditIcon />
       </Button>
-      <Button variant="negative" size="small" onClick={handleDeleteTask}>
+      <Button variant="negative" size="small" onClick={onDelete}>
         <DeleteIcon />
       </Button>
     </div>
