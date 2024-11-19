@@ -1,0 +1,46 @@
+button {
+  background: none;
+  border: 1px solid;
+  padding: 0 5px;
+  margin: 0;
+  font-size: 15px;
+  color: #343434;
+}
+
+button:hover {
+  background-color: #e8e8e8;
+}
+
+button:active {
+  background-color: #b3b0b0;
+}
+
+.button-variant-primary {
+  background-color: #fcfbfc;
+  border-color: #343434;
+}
+
+.button-variant-secondary {
+  background-color: #fcfbfc;
+  border-color: #8b8989;
+}
+
+.button-variant-negative {
+  background-color: #fcfbfc;
+  border-color: #bb1313;
+}
+
+.button-size-small {
+  width: 30px;
+  height: 30px;
+}
+
+.button-size-medium {
+  width: 75px;
+  height: 30px;
+}
+
+.button-size-large {
+  width: 175px;
+  height: 30px;
+}

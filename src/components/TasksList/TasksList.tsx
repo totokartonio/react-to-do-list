@@ -1,15 +1,16 @@
 import "./TasksList.css";
 import { FilterValues } from "../../types";
-import { TaskItem } from "../ TaskItem/TaskItem";
+import { TaskItem } from "../TaskItem/TaskItem";
 import { Task } from "../../types";
 
 type Props = {
   tasks: Task[];
   filter: FilterValues;
   onComplete: (taskId: string) => void;
+  onDelete: (taskId: string) => void;
 };
 
-const TasksList = ({ tasks, filter, onComplete }: Props) => {
+const TasksList = ({ tasks, filter, onComplete, onDelete }: Props) => {
   const filteredTasks = tasks.filter((task) => {
     if (filter === FilterValues.All) return true;
     if (filter === FilterValues.Completed) return task.isCompleted;
@@ -23,6 +24,7 @@ const TasksList = ({ tasks, filter, onComplete }: Props) => {
           key={task.id}
           task={task}
           onComplete={() => onComplete(task.id)}
+          onDelete={() => onDelete(task.id)}
         />
       ))}
     </div>
