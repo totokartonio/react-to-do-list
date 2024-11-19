@@ -6,10 +6,10 @@ import "./styles/style.css";
 import { Label } from "./components/Label/Label";
 import { NewTaskInput } from "./components/NewTaskInput/NewTaskInput";
 import { TasksList } from "./components/TasksList/TasksList";
-import { IncompleteTasksCounter } from "./components/IncompleteTasksCounter/IncompleteTasksCounter";
+import { ActiveTasksCounter } from "./components/ActiveTasksCounter/ActiveTasksCounter";
 import { Button } from "./components/Button/Button";
 import { TaskFilter } from "./components/TaskFilter/TaskFilter";
-import { getIncompleteTasksCount } from "./utils";
+import { getActiveTasksCount } from "./utils";
 import { FilterValues } from "./types";
 import type { Task } from "./types";
 
@@ -66,7 +66,7 @@ function App() {
           onDelete={handleTaskDelete}
         />
         {tasks.length > 0 && (
-          <IncompleteTasksCounter count={getIncompleteTasksCount(tasks)} />
+          <ActiveTasksCounter count={getActiveTasksCount(tasks)} />
         )}
         <Button
           variant="primary"

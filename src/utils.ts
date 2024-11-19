@@ -1,16 +1,16 @@
 import { Task } from "./types";
 
-const getIncompleteTasksCount = (tasks: Task[]) => {
+const getActiveTasksCount = (tasks: Task[]) => {
   return tasks.reduce(
     (count, task) => (task.isCompleted ? count : count + 1),
     0
   );
 };
 
-const getTasksCounterLabel = (incompleteTasksCount: number) => {
-  if (incompleteTasksCount === 0) return "No tasks left!";
-  if (incompleteTasksCount === 1) return `${incompleteTasksCount} item left!`;
-  return `${incompleteTasksCount} items left!`;
+const getTasksCounterLabel = (activeTasksCount: number) => {
+  if (activeTasksCount === 0) return "No tasks left!";
+  if (activeTasksCount === 1) return `${activeTasksCount} item left!`;
+  return `${activeTasksCount} items left!`;
 };
 
-export { getIncompleteTasksCount, getTasksCounterLabel };
+export { getActiveTasksCount, getTasksCounterLabel };
