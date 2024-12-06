@@ -41,6 +41,12 @@ function App() {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   };
 
+  const handleTaskUpdate = (updatedTask: Task) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => (task.id === updatedTask.id ? updatedTask : task))
+    );
+  };
+
   const handleClearCompletedTasks = () => {
     setTasks((prevTasks) => prevTasks.filter((task) => !task.isCompleted));
   };
@@ -64,6 +70,7 @@ function App() {
           filter={filter}
           onComplete={handleComplete}
           onDelete={handleTaskDelete}
+          onUpdate={handleTaskUpdate}
         />
         {tasks.length > 0 && (
           <ActiveTasksCounter count={getActiveTasksCount(tasks)} />
