@@ -18,7 +18,7 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [filter, setFilter] = useState<FilterValues>(FilterValues.All);
 
-  const handleAddTask = (event: React.SyntheticEvent) => {
+  const handleTaskAdd = (event: React.SyntheticEvent) => {
     event.preventDefault();
     const task: Task = {
       id: crypto.randomUUID(),
@@ -29,7 +29,7 @@ function App() {
     setNewTask("");
   };
 
-  const handleComplete = (taskId: string) => {
+  const handleTaskComplete = (taskId: string) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
@@ -39,6 +39,14 @@ function App() {
 
   const handleTaskDelete = (taskId: string) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  };
+
+  const handleTaskUpdate = (id: string, value: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, title: value } : task
+      )
+    );
   };
 
   const handleClearCompletedTasks = () => {
@@ -52,7 +60,7 @@ function App() {
   return (
     <div>
       <div className="content-container">
-        <form className="new-task-form" onSubmit={handleAddTask}>
+        <form className="new-task-form" onSubmit={handleTaskAdd}>
           <Label />
           <NewTaskInput onChange={setNewTask} value={newTask} />
           <Button type="submit" variant="primary" size="medium">
@@ -62,8 +70,9 @@ function App() {
         <TasksList
           tasks={tasks}
           filter={filter}
-          onComplete={handleComplete}
+          onComplete={handleTaskComplete}
           onDelete={handleTaskDelete}
+          onUpdate={handleTaskUpdate}
         />
         {tasks.length > 0 && (
           <ActiveTasksCounter count={getActiveTasksCount(tasks)} />

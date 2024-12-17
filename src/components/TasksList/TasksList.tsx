@@ -8,9 +8,16 @@ type Props = {
   filter: FilterValues;
   onComplete: (taskId: string) => void;
   onDelete: (taskId: string) => void;
+  onUpdate: (id: string, value: string) => void;
 };
 
-const TasksList = ({ tasks, filter, onComplete, onDelete }: Props) => {
+const TasksList = ({
+  tasks,
+  filter,
+  onComplete,
+  onDelete,
+  onUpdate,
+}: Props) => {
   const filteredTasks = tasks.filter((task) => {
     if (filter === FilterValues.All) return true;
     if (filter === FilterValues.Completed) return task.isCompleted;
@@ -25,6 +32,7 @@ const TasksList = ({ tasks, filter, onComplete, onDelete }: Props) => {
           task={task}
           onComplete={() => onComplete(task.id)}
           onDelete={() => onDelete(task.id)}
+          onUpdate={onUpdate}
         />
       ))}
     </div>

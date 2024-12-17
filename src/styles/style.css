@@ -20,3 +20,7 @@ body {
   align-items: center;
   gap: 30px;
 }
+
+.new-task-form button {
+  text-wrap: nowrap;
+}
