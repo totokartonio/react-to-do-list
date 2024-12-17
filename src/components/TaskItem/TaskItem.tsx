@@ -9,37 +9,27 @@ type Props = {
   task: Task;
   onComplete: () => void;
   onDelete: () => void;
-  onUpdate: (updatedTask: Task) => void;
+  onUpdate: (id: string, value: string) => void;
 };
 
 const TaskItem = ({ task, onComplete, onDelete, onUpdate }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [taskText, setTaskText] = useState(task.title);
+  const [title, setTitle] = useState(task.title);
 
-  const handleEditTask = () => {
+  const handleEditTitle = () => {
     setIsEditing(true);
-  };
-
-  const handleChange = (value: string) => {
-    setTaskText(value);
   };
 
   const handleSave = () => {
     setIsEditing(false);
-    onUpdate({ ...task, title: taskText });
+    onUpdate(task.id, title);
   };
 
   return (
     <div className="task">
-      <input
-        className="checkbox"
-        type="checkbox"
-        checked={task.isCompleted}
-        onChange={onComplete}
-      />
       {isEditing ? (
         <>
-          <NewTaskInput value={taskText} onChange={handleChange} />
+          <NewTaskInput value={title} onChange={setTitle} />
           <Button
             type="submit"
             variant="primary"
@@ -51,15 +41,21 @@ const TaskItem = ({ task, onComplete, onDelete, onUpdate }: Props) => {
         </>
       ) : (
         <>
-          <p>{taskText}</p>
-          <Button variant="secondary" size="small" onClick={handleEditTask}>
+          <input
+            className="checkbox"
+            type="checkbox"
+            checked={task.isCompleted}
+            onChange={onComplete}
+          />
+          <p>{title}</p>
+          <Button variant="secondary" size="small" onClick={handleEditTitle}>
             <EditIcon />
+          </Button>
+          <Button variant="negative" size="small" onClick={onDelete}>
+            <DeleteIcon />
           </Button>
         </>
       )}
-      <Button variant="negative" size="small" onClick={onDelete}>
-        <DeleteIcon />
-      </Button>
     </div>
   );
 };
